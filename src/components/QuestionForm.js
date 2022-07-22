@@ -22,6 +22,18 @@ function QuestionForm(props) {
     console.log(formData);
   }
 
+  fetch(`http://localhost:4000/questions`, {
+        method: "POST",
+        headers: {
+      "Content-Type": "application/json"
+    },
+      body: JSON.stringify(newQuestion),
+    })
+      .then((res) => res.json())
+      .then((question) => {
+      onAddQuestions(question);
+    });
+
   return (
     <section>
       <h1>New Question</h1>
